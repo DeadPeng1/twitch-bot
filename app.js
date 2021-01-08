@@ -36,7 +36,10 @@ client.on("connected", (address, port) => {
 
 client.on("chat", (target, ctx, message, self) => {
     if (self) return;
-
+    if (message === '-server stop' && ctx.username === channel){
+        client.say(target, `Server Stopped by ${ctx['display-name']}`)
+        throw new Error('Stopped by moderator.') 
+    }
     console.log(target)
     console.log(ctx)
 
@@ -45,22 +48,21 @@ client.on("chat", (target, ctx, message, self) => {
     const cmd = args.shift().toLowerCase();
     try {
         let commandFile = require(`./Commands/${cmd}.js`)
-        commandFile.run(client, target, ctx, message, self, args)
-        
+        commandFile.run(client, target, ctx, message, self, args, channel)
     } catch (error) {
         return
     }
 
 });
 
-client.on('cheer', (target, userstate, message) => {
-    console.log(`${userstate.username} cheered ${userstate.bits} bits with message: "${message}"`)
-    client.say(`${userstate['display-name']} cheered ${userstate.bits} bits with message: "${message}"`)
+client.on('cheer', (target, ctx, message) => {
+    console.log(`${ctx.username} cheered ${ctx.bits} bits with message: "${message}"`)
+    client.say(`${ctx['display-name']} cheered ${ctx.bits} bits with message: "${message}"`)
 });
 
-client.on('bits', (target, userstate, message) => {
-    console.log(`${userstate.username} cheered ${userstate.bits} bits with message: "${message}"`)
-    client.say(`${userstate.username} cheered ${userstate.bits} bits with message: "${message}"`)
+client.on('bits', (target, ctx, message) => {
+    console.log(`${ctx.username} cheered ${ctx.bits} bits with message: "${message}"`)
+    client.say(`${ctx.username} cheered ${ctx.bits} bits with message: "${message}"`)
 });
 
 

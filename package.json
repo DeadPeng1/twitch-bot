@@ -11,6 +11,7 @@
   "dependencies": {
     "fs": "0.0.1-security",
     "random": "^2.2.0",
+    "sql": "^0.78.0",
     "tmi.js": "^1.7.1"
   },
   "devDependencies": {

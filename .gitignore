@@ -1,1 +1,3 @@
 .env
+./Commands/giveaway.js
+./giveaway/
