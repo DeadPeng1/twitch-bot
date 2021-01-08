@@ -1,0 +1,19 @@
+{
+  "name": "com.mendoza.twitchbot1",
+  "version": "0.0.0",
+  "description": "First Twitch chat bot",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Aiden Mendoza",
+  "license": "ISC",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "random": "^2.2.0",
+    "tmi.js": "^1.7.1"
+  },
+  "devDependencies": {
+    "dotenv": "^8.2.0"
+  }
+}
